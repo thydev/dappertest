@@ -1,0 +1,13 @@
+@{
+    ViewData["Title"] = "Add a new trail";
+}
+
+<h3>Add a new trail</h3>
+<form action="/create" method="post">
+    <p>Name: <input type="text" name="name"></p>
+    <p>Descrtiption: <textarea name="description" id="" cols="30" rows="3"></textarea></p>
+    <p>Length: <input type="text" name="length"></p>
+    <p>Longitude: <input type="text" name="longitude"></p>
+    <p>Latitude: <input type="text" name="latitude"></p>
+    <button type="submit">Create</button>
+</form>
