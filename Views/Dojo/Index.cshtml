@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Dojos";
+}   
+    <div class="wells wells-sm display-ninja">
+        <h3>All Dojos</h3>
+        <table class="table">
+            <tr>
+                <th>Dojo Name</th>
+                
+            </tr>
+        @foreach(var dojo in @ViewBag.Dojos) {
+            <tr>
+                <td><a href="/dojos/@dojo.Id">@dojo.Name</a></td>
+            </tr>
+        }
+        </table>
+
+        
+    </div>
+    <div class="wells wells-sm add-ninja">
+        <form action="/dojos/create" method="post">
+            <p>Dojo Name: <input type="text" name="name"></p>
+            <p>Dojo Location: <input type="text" name="location"></p>
+            
+            <p>Additional Information: (Optional) <textarea name="description" id="" cols="30" rows="3"></textarea></p>
+
+            <button type="submit">Create</button>
+        </form>
+
+    </div>

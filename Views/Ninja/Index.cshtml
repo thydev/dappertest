@@ -1,0 +1,42 @@
+@{
+    ViewData["Title"] = "Ninjas";
+}   
+    <div class="wells wells-sm display-ninja">
+        <table class="table">
+            <tr>
+                <th>Ninja Name</th>
+                <th>Home Dojo</th>
+                
+            </tr>
+        @foreach(var ninja in @ViewBag.Ninjas) {
+            <tr>
+                <td><a href="/ninjas/@ninja.Id">@ninja.Name</a></td>
+                <td>
+                @if(ninja.dojo_id == 0) {
+                    <span>Rogue</span>
+                } else {
+                    <a href="/dojos/@ninja.Dojo.Id">@ninja.Dojo.Name</a>
+                }
+                </td>
+            </tr>
+        }
+        </table>
+    </div>
+    <div class="wells wells-sm add-ninja">
+        <form action="/ninjas/create" method="post">
+            <p>Name: <input type="text" name="name"></p>
+            <p>Ninja Level: <input type="number" min="1" max="11" name="level"></p>
+            <p>Assign Dojo?: 
+                <select name="dojo_id" id="dojo">
+                    <option value="0">Rogue</option>
+                @foreach(var dojo in @ViewBag.Dojos) {
+                    <option value="@dojo.Id">@dojo.Name</option>
+                }
+                </select>
+            </p>
+            <p>Descrtiption: (Optional) <textarea name="description" id="" cols="30" rows="3"></textarea></p>
+
+            <button type="submit">Create</button>
+        </form>
+
+    </div>
